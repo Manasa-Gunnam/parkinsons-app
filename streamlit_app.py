@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 import pickle
 import os
+import json
+import hashlib
 
 # ================================
 # LOAD MODEL
@@ -12,46 +14,88 @@ model = pickle.load(open(os.path.join(BASE_DIR, "parkinsons_model.pkl"), "rb"))
 scaler = pickle.load(open(os.path.join(BASE_DIR, "scaler.pkl"), "rb"))
 
 # ================================
-# PAGE CONFIG
+# USER DATABASE FILE
 # ================================
-st.set_page_config(page_title="Parkinson's Detection", layout="wide")
+USER_DB = "users.json"
+
+# Create file if not exists
+if not os.path.exists(USER_DB):
+    with open(USER_DB, "w") as f:
+        json.dump({}, f)
 
 # ================================
-# SIMPLE USER DATABASE
+# PASSWORD HASH FUNCTION
 # ================================
-USER_CREDENTIALS = {
-    "ManasaGunnam": "Manasa@123",
-    "user": "password"
-}
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
+
+# ================================
+# LOAD USERS
+# ================================
+def load_users():
+    with open(USER_DB, "r") as f:
+        return json.load(f)
+
+# ================================
+# SAVE USERS
+# ================================
+def save_users(users):
+    with open(USER_DB, "w") as f:
+        json.dump(users, f)
 
 # ================================
 # SESSION STATE
 # ================================
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
+if "username" not in st.session_state:
+    st.session_state.username = ""
 
 # ================================
-# LOGIN FUNCTION
+# SIGNUP
+# ================================
+def signup():
+    st.title("📝 Signup")
+
+    new_user = st.text_input("Username")
+    new_pass = st.text_input("Password", type="password")
+
+    if st.button("Create Account"):
+        users = load_users()
+
+        if new_user in users:
+            st.error("User already exists")
+        else:
+            users[new_user] = hash_password(new_pass)
+            save_users(users)
+            st.success("Account created! Go to login.")
+
+# ================================
+# LOGIN
 # ================================
 def login():
     st.title("🔐 Login")
 
-    username = st.text_input("Username")
+    user = st.text_input("Username")
     password = st.text_input("Password", type="password")
 
     if st.button("Login"):
-        if username in USER_CREDENTIALS and USER_CREDENTIALS[username] == password:
+        users = load_users()
+
+        if user in users and users[user] == hash_password(password):
             st.session_state.logged_in = True
-            st.success("Login Successful!")
+            st.session_state.username = user
+            st.success("Login successful!")
             st.rerun()
         else:
-            st.error("Invalid Username or Password")
+            st.error("Invalid credentials")
 
 # ================================
-# LOGOUT FUNCTION
+# LOGOUT
 # ================================
 def logout():
     st.session_state.logged_in = False
+    st.session_state.username = ""
     st.rerun()
 
 # ================================
@@ -59,10 +103,10 @@ def logout():
 # ================================
 def main_app():
 
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", ["Prediction", "About"])
-
+    st.sidebar.title(f"👋 Welcome {st.session_state.username}")
     st.sidebar.button("Logout", on_click=logout)
+
+    page = st.sidebar.radio("Navigation", ["Prediction", "About"])
 
     if page == "Prediction":
         st.title("🧠 Parkinson's Prediction")
@@ -113,35 +157,18 @@ def main_app():
             else:
                 st.success(f"✅ Healthy (Confidence: {confidence:.2f}%)")
 
-# ================================
-# ABOUT PAGE
-# ================================
-elif page == "About":
-
-    st.markdown("""
-    ## 📘 About This Project
-
-    This application uses Machine Learning models to predict Parkinson's Disease 
-    based on voice measurements.
-
-    ### 🚀 Features
-    - High accuracy ML models
-    - Clean and modern UI
-    - Real-time prediction
-
-    ### 🧠 Models Used
-    - Support Vector Machine
-    - Random Forest
-    - XGBoost
-
-    ### 👨‍💻 Developed By
-    (Add your name here)
-    """)
+    elif page == "About":
+        st.title("📘 About")
+        st.write("Parkinson's Disease Prediction using ML with secure login system.")
 
 # ================================
-# APP ROUTING
+# AUTH FLOW
 # ================================
 if not st.session_state.logged_in:
-    login()
+    choice = st.sidebar.radio("Select", ["Login", "Signup"])
+    if choice == "Login":
+        login()
+    else:
+        signup()
 else:
     main_app()
