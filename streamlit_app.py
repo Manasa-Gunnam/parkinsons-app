@@ -20,7 +20,7 @@ st.set_page_config(page_title="Parkinson's Detection", layout="wide")
 # SIMPLE USER DATABASE
 # ================================
 USER_CREDENTIALS = {
-    "admin": "1234",
+    "ManasaGunnam": "Manasa@123",
     "user": "password"
 }
 
