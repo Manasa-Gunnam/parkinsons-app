@@ -119,5 +119,5 @@ elif page == "About":
     Parkinson's dataset containing biomedical voice features.
 
     ### 🚀 Developed By
-    (Add your name here)
+    (Manasa Gunnam)
     """)
