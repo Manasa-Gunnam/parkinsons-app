@@ -1,15 +1,29 @@
 <h1 align="center">🧠 Parkinson's Disease Prediction System</h1>
 
 <p align="center">
-  A Machine Learning Web App for Early Detection of Parkinson’s Disease
-</p>
+  <a href="https://github.com/your-username/parkinsons-prediction">
+    <img src="https://img.shields.io/badge/GitHub-Repository-black?logo=github"/>
+  </a>
+  
+  <a href="https://your-streamlit-app-link.streamlit.app">
+    <img src="https://img.shields.io/badge/Live-Demo-brightgreen?logo=streamlit"/>
+  </a>
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python"/>
-  <img src="https://img.shields.io/badge/ML-Scikit--Learn-orange"/>
-  <img src="https://img.shields.io/badge/XGBoost-Enabled-green"/>
-  <img src="https://img.shields.io/badge/Framework-Streamlit-red"/>
-  <img src="https://img.shields.io/badge/Status-Completed-success"/>
+  <a href="https://www.python.org/">
+    <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python"/>
+  </a>
+
+  <a href="https://scikit-learn.org/">
+    <img src="https://img.shields.io/badge/ML-Scikit--Learn-orange"/>
+  </a>
+
+  <a href="https://xgboost.readthedocs.io/">
+    <img src="https://img.shields.io/badge/XGBoost-Enabled-green"/>
+  </a>
+
+  <a href="https://streamlit.io/">
+    <img src="https://img.shields.io/badge/Framework-Streamlit-red"/>
+  </a>
 </p>
 
 ---
