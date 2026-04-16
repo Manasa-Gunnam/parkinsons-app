@@ -1,23 +1,39 @@
-# 🧠 Parkinson's Disease Prediction System
+<h1 align="center">🧠 Parkinson's Disease Prediction System</h1>
+
+<p align="center">
+  A Machine Learning Web App for Early Detection of Parkinson’s Disease
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.10-blue?logo=python"/>
+  <img src="https://img.shields.io/badge/ML-Scikit--Learn-orange"/>
+  <img src="https://img.shields.io/badge/XGBoost-Enabled-green"/>
+  <img src="https://img.shields.io/badge/Framework-Streamlit-red"/>
+  <img src="https://img.shields.io/badge/Status-Completed-success"/>
+</p>
+
+---
 
 ## 📌 Overview
-This project is a Machine Learning-based web application that predicts whether a person is affected by Parkinson’s disease using biomedical voice measurements.
 
-The system uses multiple machine learning models and selects the best-performing model based on evaluation metrics.
+This project is a Machine Learning-based system that predicts Parkinson’s Disease using biomedical voice measurements.
+
+It compares multiple models and selects the best one for accurate prediction.
 
 ---
 
 ## 🎯 Objectives
-- Build a reliable prediction system for Parkinson’s disease  
-- Compare multiple machine learning models  
-- Achieve high accuracy using optimized algorithms  
-- Deploy an interactive web application  
+
+✔ Early disease detection using ML  
+✔ Compare multiple algorithms  
+✔ Achieve high prediction accuracy  
+✔ Deploy interactive web application  
 
 ---
 
 ## 🧪 Dataset
-- Source: UCI ML Repository / Kaggle  
-- Features: 22 biomedical voice measurements  
+
+- 22 biomedical voice features  
 - Target:
   - `1` → Parkinson’s Disease  
   - `0` → Healthy  
@@ -25,75 +41,69 @@ The system uses multiple machine learning models and selects the best-performing
 ---
 
 ## ⚙️ Tech Stack
+
 - Python  
 - NumPy, Pandas  
 - Scikit-learn  
 - XGBoost  
 - Streamlit  
 - Google Colab  
-- GitHub  
 
 ---
 
 ## 🧠 Models Used
-- Support Vector Machine (SVM)  
-- Random Forest Classifier  
-- XGBoost Classifier  
 
-All models were tuned using **GridSearchCV** for optimal performance.
+| Model           | Description |
+|----------------|------------|
+| SVM            | Works well for high-dimensional data |
+| Random Forest  | Ensemble model reducing overfitting |
+| XGBoost        | Boosting algorithm with high performance |
 
 ---
 
 ## 📊 Model Performance
 
-### 🔹 SVM
-- Accuracy: **89.74%**
+<p align="center">
 
-### 🔹 Random Forest
-- Accuracy: **92.31%**
+| Model           | Accuracy |
+|----------------|----------|
+| SVM            | 89.74%   |
+| Random Forest  | 92.31%   |
+| XGBoost        | 92.31%   |
 
-### 🔹 XGBoost
-- Accuracy: **92.31%**
-
----
-
-## 🏆 Best Model Selected
-**Random Forest Classifier**  
-- Accuracy: **92.31%**
-
-Reason:
-- Balanced precision and recall  
-- Better performance on both classes  
-- More stable predictions  
+</p>
 
 ---
 
-## 📈 Evaluation Metrics
+## 🏆 Best Model
 
-### 🔹 Classification Report Summary
-- High precision and recall for Parkinson’s class  
-- Good balance between false positives and false negatives  
+<p align="center">
+<b>Random Forest Classifier</b><br>
+Accuracy: <b>92.31%</b>
+</p>
 
 ---
 
-## 📊 Visualizations
+## 📈 Visualizations
 
 ### 🔹 ROC Curve
-![ROC Curve](<img width="567" height="455" alt="image" src="https://github.com/user-attachments/assets/ed5c7fd3-03ab-47db-b7d6-048e23d942d5" />
-)
+<p align="center">
+  <img src="images/roc_curve.png" width="500"/>
+</p>
 
 ### 🔹 Precision-Recall Curve
-![Precision Recall](<img width="576" height="455" alt="image" src="https://github.com/user-attachments/assets/5f5d9724-32c9-4545-acca-73b8c2ae7ae9" />
-)
+<p align="center">
+  <img src="images/precision_recall.png" width="500"/>
+</p>
 
 ---
 
 ## 🖥️ Application Features
-- User-friendly Streamlit interface  
-- Real-time prediction  
-- Multiple model comparison  
-- Graph-based analysis  
-- Input validation  
+
+✔ Real-time prediction  
+✔ Interactive UI (Streamlit)  
+✔ Model comparison  
+✔ Graph-based insights  
 
 ---
 
